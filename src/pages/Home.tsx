@@ -35,16 +35,18 @@ export const Home = () => {
 
   return (
     <div className="">
-      <div className="flex w-full justify-between border border-red-500 items-center">
+      <div className="flex w-full justify-between border border-red-500 items-end px-[4rem]">
         <input
           onChange={handleOnChange}
           type="text"
-          className=" mx-[4rem] w-[400px] mt-[80px] rounded-lg py-2 pl-2 border-2 border-grey-500"
+          className="w-[400px] mt-[80px] rounded-lg py-2 pl-2 border-2 border-grey-500"
           placeholder="Search Product"
         />
-        <CategorySelector />
+        <div className="">
+          <CategorySelector />
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-[4rem] pt-40">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-[4rem] pt-[80px]">
         {filteredProductList?.map((item: any) => (
           <ProductItem item={item} key={item._id} />
         ))}

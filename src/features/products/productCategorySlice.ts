@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Axios } from "../../services/product";
-import { Product, ProductCategory } from "../../types";
+import { ProductCategory } from "../../types";
 
 interface ProductCategoris {
   categories: ProductCategory[];
@@ -24,14 +24,6 @@ export const fetchCategories = createAsyncThunk(
     return response.data;
   }
 );
-
-/* export const fetchProductCategory = createAsyncThunk(
-  "productCategories/fetch",
-  async (_id: Product["_id"]) => {
-    const response = await Axios.get<{ product: Product }>(`/category/${_id}`);
-    return response;
-  }
-); */
 
 export const productCategoriesSlice = createSlice({
   name: "productCategories",
