@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import { useAppSelector } from "../app/hooks";
 
 export const ProductDetailsPage = () => {
+  
   const selectedProduct = useAppSelector(
     (state) => state.productDetails.selectedProduct
   );
-
-  console.log("selectedProduct", selectedProduct);
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-screen">

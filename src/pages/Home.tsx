@@ -11,6 +11,11 @@ export const Home = () => {
   console.log("productList", productList);
   const dispatch = useAppDispatch();
 
+  const favoriteState = useAppSelector((state) => state.favoritedProduct);
+  console.log("favoriteState", favoriteState);
+
+  console.log("favoriteState", Object.values(favoriteState));
+
   const [filteredProduct, setFilteredProduct] = useState<any>([]);
 
   const filteredProductList = productList.filter(({ name }) =>

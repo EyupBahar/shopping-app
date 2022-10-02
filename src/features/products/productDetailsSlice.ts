@@ -47,14 +47,12 @@ export const productDetailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProductDetails.pending, (state, action) => {
-      console.log("pending");
       state.loading = true;
       state.error = "An Error Accured !";
     });
     builder.addCase(
       fetchProductDetails.fulfilled,
       (state, action: PayloadAction<Product>) => {
-        console.log("fulfilled");
         state.loading = false;
         state.selectedProduct = action.payload;
         console.log(action.payload);
@@ -62,7 +60,6 @@ export const productDetailsSlice = createSlice({
       }
     );
     builder.addCase(fetchProductDetails.rejected, (state) => {
-      console.log("rejected");
       state.error = "An Error Accured !";
       state.loading = false;
     });

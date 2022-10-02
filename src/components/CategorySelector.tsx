@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppSelector } from "../app/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ProductCategory } from "../types";
@@ -20,24 +19,18 @@ export const CategorySelector = () => {
 
   return (
     <div className="border">
-      {/*  <form onSubmit={handleSubmit(onSubmit)}> */}
-      <div className="">
-        <option value="All">Categories</option>
-        {/* {category.categories.map((item) => (
-          <div>{item.name}</div>
-        ))} */}
-        {/*  {category.categories?.map((item) => (
-            <option key={item?._id} value={item?.name}>
-              {item?.name}
-            </option>
-          ))} */}
-        {/*  {category.categories.map((option) => (
-            <option key={option._id} value={option.name}>
-              {option.name}
-            </option>
-          ))} */}
-      </div>
-      {/*  </form> */}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="">
+          <select>
+            <option value="All">Categories</option>
+            {category?.categories?.map((item) => (
+              <option key={item?._id} value={item?.name}>
+                {item?.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </form>
     </div>
   );
 };

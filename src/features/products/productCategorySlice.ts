@@ -47,7 +47,7 @@ export const productCategoriesSlice = createSlice({
       (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.error = "An Error Accured !";
-        state.categories = action.payload;
+        state.categories = action.payload.categories;
         console.log(action.payload, "action payload verisi");
       }
     );

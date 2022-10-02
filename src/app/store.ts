@@ -1,19 +1,12 @@
-import { favoritedProductReducer } from "./../features/products/favoriteProductSlice";
+import { persistStore } from "redux-persist";
+import { persistedReducer } from "./rootReducer";
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import productDetailsSlice from "../features/products/productDetailsSlice";
-import productSlice from "../features/products/productSlice";
-import productCategoriesSlice from "../features/products/productDetailsSlice";
-import productCategorySlice from "../features/products/productCategorySlice";
 
 export const store = configureStore({
-  reducer: {
-    product: productSlice,
-    productDetails: productDetailsSlice,
-    productCategories: productCategoriesSlice,
-    productCategory: productCategorySlice,
-    favoritedProduct: favoritedProductReducer,
-  },
+  reducer: persistedReducer,
 });
+
+export const persistor = persistStore(store);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

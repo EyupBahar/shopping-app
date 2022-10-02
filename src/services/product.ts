@@ -29,6 +29,8 @@ const getProductCategories = async () => {
   return response.data.products;
 };
 
+
+
 interface ProductService {
   getProducts: typeof getProducts;
   createNewProduct: typeof createNewProduct;

@@ -5,18 +5,18 @@ import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { CreateProduct } from "./pages/createProduct";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
+import { FavoriteProducts } from "./pages/favoriteProducts";
+import Navbar from "./components/Navbar";
 
 export const App = () => {
-  /* const product = useAppSelector((state) => state.product);
-  console.log("product", product.data);
-  const dispatch = useDispatch<AppDispatch>(); */
-
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="product-details/:id" element={<ProductDetailsPage />} />
         <Route path="create-product" element={<CreateProduct />}></Route>
+        <Route path="favorite-product" element={<FavoriteProducts />}></Route>
       </Routes>
     </BrowserRouter>
   );
