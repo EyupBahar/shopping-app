@@ -8,7 +8,19 @@ import { CategorySelector } from "../components/CategorySelector";
 
 export const Home = () => {
   const productList = useAppSelector((state) => state.product.data);
+  console.log("productList", productList);
   const dispatch = useAppDispatch();
+
+  const [filteredProduct, setFilteredProduct] = useState<any>([]);
+
+  const filteredProductList = productList.filter(({ name }) =>
+    name.includes(filteredProduct)
+  );
+  console.log("filteredProductList", filteredProductList);
+
+  const handleOnChange = (event: any) => {
+    setFilteredProduct(event.target.value);
+  };
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -17,16 +29,18 @@ export const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg bg-slate-200">
-      <input
-        /* onChange={(e) => setFilteredProduct(e.target.value)} */
-        type="text"
-        className=" mx-[4rem] w-[400px] mt-[80px] rounded-lg py-2 pl-2"
-        placeholder="Search Product"
-      />
-      <CategorySelector />
+    <div className="">
+      <div className="flex w-full justify-between border border-red-500 items-center">
+        <input
+          onChange={handleOnChange}
+          type="text"
+          className=" mx-[4rem] w-[400px] mt-[80px] rounded-lg py-2 pl-2 border-2 border-grey-500"
+          placeholder="Search Product"
+        />
+        <CategorySelector />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-[4rem] pt-40">
-        {productList?.map((item: any) => (
+        {filteredProductList?.map((item: any) => (
           <ProductItem item={item} key={item._id} />
         ))}
       </div>

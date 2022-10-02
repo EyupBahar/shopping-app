@@ -1,3 +1,4 @@
+import { favoritedProductReducer } from "./../features/products/favoriteProductSlice";
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import productDetailsSlice from "../features/products/productDetailsSlice";
 import productSlice from "../features/products/productSlice";
@@ -10,6 +11,7 @@ export const store = configureStore({
     productDetails: productDetailsSlice,
     productCategories: productCategoriesSlice,
     productCategory: productCategorySlice,
+    favoritedProduct: favoritedProductReducer,
   },
 });
 

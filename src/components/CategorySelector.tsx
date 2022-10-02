@@ -6,7 +6,8 @@ import { productService } from "../services/product";
 
 export const CategorySelector = () => {
   const category = useAppSelector((state) => state.productCategory);
-  console.log("from CategorySelector === >>>>>", category);
+  console.log("from CategorySelector === >>>>>", category.categories);
+
   const {
     register,
     resetField,
@@ -18,19 +19,25 @@ export const CategorySelector = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col  w-[400px]">
-          <label htmlFor="" className="mt-2">
-            Name
-          </label>
-          {category.categories.map((option) => (
+    <div className="border">
+      {/*  <form onSubmit={handleSubmit(onSubmit)}> */}
+      <div className="">
+        <option value="All">Categories</option>
+        {/* {category.categories.map((item) => (
+          <div>{item.name}</div>
+        ))} */}
+        {/*  {category.categories?.map((item) => (
+            <option key={item?._id} value={item?.name}>
+              {item?.name}
+            </option>
+          ))} */}
+        {/*  {category.categories.map((option) => (
             <option key={option._id} value={option.name}>
               {option.name}
             </option>
-          ))}
-        </div>
-      </form>
+          ))} */}
+      </div>
+      {/*  </form> */}
     </div>
   );
 };

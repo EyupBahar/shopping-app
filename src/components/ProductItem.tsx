@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
+import { setFavoritedProduct } from "../features/products/favoriteProductSlice";
 import { fetchProductDetails } from "../features/products/productDetailsSlice";
 import { Product } from "../types";
 
@@ -18,8 +19,9 @@ export const ProductItem = ({ item }: ProductItemProps) => {
         navigate(`product-details/${item._id}`);
         console.log("item id", item._id);
       }}
-      className="rounded-lg p-4 cursor-pointer bg-white mb-20 flex flex-col justify-between h-[500px]"
+      className="rounded-lg p-4 cursor-pointer bg-blue-100 mb-20 flex flex-col justify-between h-[500px]"
     >
+      <p onClick={() => dispatch(setFavoritedProduct(item._id))}> favori </p>
       <div className="max-h-[50%] justify-center items-center flex">
         <img
           src={item.avatar}

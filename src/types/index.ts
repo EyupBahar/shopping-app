@@ -27,3 +27,21 @@ export type ProductCategory = {
   updatedAt: string;
   __v: 0;
 };
+
+export type SelectBoxOptionProp = {
+  text: string;
+  value: string | number;
+  disabled?: boolean;
+};
+
+export type SelectBoxProps<T> = {
+  options: T[];
+  onChange?: (value: string) => void;
+  value?: string | number;
+  label?: string;
+  className?: string;
+  isError?: boolean;
+  autocomplete?: boolean;
+  disabled?: boolean;
+  defaultValue?: number | string;
+};

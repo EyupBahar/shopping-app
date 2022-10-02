@@ -62,6 +62,7 @@ export const productSlice = createSlice({
   },
 });
 
+
 export const createProductSlice = createSlice({
   name: "createProduct",
   initialState,
