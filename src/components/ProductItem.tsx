@@ -3,6 +3,7 @@ import { useAppDispatch } from "../app/hooks";
 import { setFavoritedProduct } from "../features/products/favoriteProductSlice";
 import { fetchProductDetails } from "../features/products/productDetailsSlice";
 import { Product } from "../types";
+import { truncate } from "../utils/truncate";
 
 type ProductItemProps = {
   item: Product;
@@ -21,17 +22,17 @@ export const ProductItem = ({ item }: ProductItemProps) => {
       }}
       className="rounded-lg p-4 cursor-pointer bg-blue-100 mb-20 flex flex-col justify-between h-[500px]"
     >
-      <p onClick={() => dispatch(setFavoritedProduct(item._id))}> favori </p>
-      <div className="max-h-[50%] justify-center items-center flex">
+      {/* <p onClick={() => dispatch(setFavoritedProduct(item._id))}> favori </p> */}
+      <div className="h-[50%] justify-center items-center flex bg-white rounded-lg">
         <img
           src={item.avatar}
           alt="avatar"
-          className="object-fill max-h-[50%] mx-auto"
+          className="object-contain h-[50%] mx-auto w-full"
         />
       </div>
-      <div className=" h-auto overflow-auto flex flex-col items-start justify-center mt-4">
+      <div className=" h-[50%] mt-4 overflow-auto flex flex-col items-start justify-start">
         <h1 className="text-[24px] font-medium">{item.name}</h1>
-        <p className="pt-2 overflow-auto">{item.description}</p>
+        <p className="pt-2 overflow-auto h-[150px]">{truncate(item.description, 130)}</p>
         <p className="pt-2 font-medium">$ {item.price}</p>
       </div>
     </div>

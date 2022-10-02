@@ -1,4 +1,3 @@
-import { createProductRequest } from "./../../types/index";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Product } from "../../types";
