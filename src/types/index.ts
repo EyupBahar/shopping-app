@@ -19,3 +19,11 @@ export type createProductRequest = {
   avatar: string;
   developerEmail: string;
 };
+
+export type ProductCategory = {
+  _id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: 0;
+};
