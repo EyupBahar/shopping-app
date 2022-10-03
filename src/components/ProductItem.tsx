@@ -19,13 +19,13 @@ export const ProductItem = ({ item }: ProductItemProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [favorited, setFavorited] = useState(false);
-  
+
   return (
-    <div className="rounded-lg p-4 cursor-pointer bg-blue-100 mb-20 flex flex-col justify-between h-[500px]">
+    <div className="rounded-lg p-4 cursor-pointer bg-blue-200 mb-20 flex flex-col justify-between h-[500px]">
       <p>
         {!favorited ? (
           <Star
-            color="black"
+            color="white"
             onClick={() => {
               dispatch(setFavoritedProduct(item));
               setFavorited(!favorited);
@@ -33,8 +33,11 @@ export const ProductItem = ({ item }: ProductItemProps) => {
           />
         ) : (
           <Star
-            color="blue"
-            onClick={() => dispatch(deleteFavoriteProduct(item))}
+            onClick={() => {
+              dispatch(deleteFavoriteProduct(item));
+              setFavorited(!favorited);
+            }}
+            color={favorited ? "blue" : "white"}
           />
         )}
       </p>

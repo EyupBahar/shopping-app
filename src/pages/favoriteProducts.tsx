@@ -1,6 +1,4 @@
-import React from "react";
 import { Star } from "react-feather";
-import { useDispatch } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { deleteFavoriteProduct } from "../features/products/favoriteProductSlice";
 import { truncate } from "../utils/truncate";
@@ -8,7 +6,6 @@ import { truncate } from "../utils/truncate";
 export const FavoriteProducts = () => {
   const dispatch = useAppDispatch();
   const favoriteState = useAppSelector((state) => state.favoritedProduct);
-  console.log("favoriteState", favoriteState);
   const favoriteProductList = Object.values(favoriteState);
 
   return (

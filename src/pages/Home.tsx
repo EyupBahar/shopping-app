@@ -7,20 +7,12 @@ import { CategorySelector } from "../components/CategorySelector";
 
 export const Home = () => {
   const productList = useAppSelector((state) => state.product.data);
-  console.log("productList", productList);
   const dispatch = useAppDispatch();
-
-  const favoriteState = useAppSelector((state) => state.favoritedProduct);
-  console.log("favoriteState", favoriteState);
-
-  console.log("favoriteState", Object.values(favoriteState));
-
   const [filteredProduct, setFilteredProduct] = useState<any>([]);
 
   const filteredProductList = productList.filter(({ name }) =>
     name.includes(filteredProduct)
   );
-  console.log("filteredProductList", filteredProductList);
 
   const handleOnChange = (event: any) => {
     setFilteredProduct(event.target.value);
