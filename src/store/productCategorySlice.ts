@@ -20,7 +20,6 @@ export const fetchCategories = createAsyncThunk(
     const response = await axios.get<{ categories: ProductCategory[] }>(
       `/categories`
     );
-    console.log("kategori", response.data);
     return response.data;
   }
 );
@@ -41,7 +40,6 @@ export const productCategoriesSlice = createSlice({
         state.loading = false;
         state.error = "An Error Accured !";
         state.categories = action.payload.categories;
-        console.log(action.payload, "action payload verisi");
       }
     );
     builder.addCase(fetchCategories.rejected, (state) => {
@@ -66,7 +64,6 @@ export const productCategorySlice = createSlice({
         state.loading = false;
         state.error = "An Error Accured !";
         state.categories = action.payload;
-        console.log(action.payload);
       }
     );
     builder.addCase(fetchCategories.rejected, (state) => {

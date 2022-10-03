@@ -20,7 +20,6 @@ export const ProductItem = ({ item }: ProductItemProps) => {
   const isFavorite = useAppSelector((state) => state.favoritedProduct[item._id]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  console.log({isFavorite})
 
   return (
     <div className="rounded-lg p-4 cursor-pointer bg-blue-200 mb-20 flex flex-col justify-between h-[500px]">

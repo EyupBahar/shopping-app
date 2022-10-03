@@ -7,7 +7,6 @@ type CategorySelectorProps = {
 
 export const CategorySelector = ({ onChange }: CategorySelectorProps) => {
   const category = useAppSelector((state) => state.productCategory);
-  console.log("from CategorySelector === >>>>>", category.categories);
 
   return (
     <div className="border-2 border-gray-300 rounded-lg px-2 md:w-[250px]">
