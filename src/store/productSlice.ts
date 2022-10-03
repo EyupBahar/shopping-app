@@ -39,7 +39,7 @@ export const fetchProductDetails = createAsyncThunk(
   }
 );
 
-export const createProduct = createAsyncThunk(
+export const createProduct = createAsyncThunk<Product, CreateProductRequest>(
   "product/create",
   async (data: CreateProductRequest) => {
     const response = await axios.post<CreateProductRequest, { data: Product }>(
@@ -57,13 +57,12 @@ export const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state, action) => {
       state.loading = true;
-      state.error = "An Error Accured !";
+      state.error = "Pending !";
     });
     builder.addCase(
       fetchProducts.fulfilled,
       (state, action: PayloadAction<Product[]>) => {
         state.loading = false;
-        state.error = "An Error Accured !";
         state.data = action.payload;
       }
     );
@@ -81,13 +80,12 @@ export const createProductSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state, action) => {
       state.loading = true;
-      state.error = "An Error Accured !";
+      state.error = "Pending !";
     });
     builder.addCase(
       fetchProducts.fulfilled,
       (state, action: PayloadAction<Product[]>) => {
         state.loading = false;
-        state.error = "An Error Accured !";
         state.data = action.payload;
       }
     );

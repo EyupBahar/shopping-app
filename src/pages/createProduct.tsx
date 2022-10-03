@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { CreateProductRequest } from "../types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "../app/hooks";
 import { createProduct } from "../store/productSlice";
+import { useNavigate } from "react-router-dom";
 
 export const CreateProduct = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {
     register,
@@ -13,7 +14,11 @@ export const CreateProduct = () => {
     formState: { errors },
   } = useForm<CreateProductRequest>();
   const onSubmit: SubmitHandler<CreateProductRequest> = async (data) => {
-    await dispatch(createProduct(data));
+    const result = await dispatch(createProduct(data));
+    console.log("result", result);
+    if ((result?.payload as any).message === "Success") {
+      navigate("/");
+    }
   };
 
   return (

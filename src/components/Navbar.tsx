@@ -14,6 +14,11 @@ const Navbar = () => {
           <p className="text-[24px] text-white">Favorites</p>
         </Link>
       </div>
+      <div>
+        <Link to="/create-product">
+          <p className="text-[24px] text-white">Add Products</p>
+        </Link>
+      </div>
     </div>
   );
 };
