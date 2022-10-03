@@ -50,7 +50,6 @@ export const productDetailsSlice = createSlice({
       (state, action: PayloadAction<Product>) => {
         state.loading = false;
         state.selectedProduct = action.payload;
-        console.log(action.payload);
         state.error = "An Error Accured !";
       }
     );
