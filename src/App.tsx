@@ -3,9 +3,9 @@
 import { Home } from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-import { CreateProduct } from "./pages/createProduct";
+import { CreateProduct } from "./pages/CreateProduct";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
-import { FavoriteProducts } from "./pages/favoriteProducts";
+import { FavoriteProducts } from "./pages/FavoriteProducts";
 import Navbar from "./components/Navbar";
 
 export const App = () => {

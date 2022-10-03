@@ -11,7 +11,7 @@ export type Product = {
   __v: number;
 };
 
-export type createProductRequest = {
+export type CreateProductRequest = {
   name: string;
   price: number;
   category: string;

@@ -1,11 +1,11 @@
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "redux";
-import { favoritedProductReducer } from "./../features/products/favoriteProductSlice";
-import productDetailsSlice from "../features/products/productDetailsSlice";
-import productSlice from "../features/products/productSlice";
-import productCategoriesSlice from "../features/products/productDetailsSlice";
-import productCategorySlice from "../features/products/productCategorySlice";
+import { favoritedProductReducer } from "../store/favoriteProductSlice";
+import productDetailsSlice from "../store/productDetailsSlice";
+import productSlice from "../store/productSlice";
+import productCategoriesSlice from "../store/productDetailsSlice";
+import productCategorySlice from "../store/productCategorySlice";
 
 export const rootReducer = combineReducers({
   product: productSlice,

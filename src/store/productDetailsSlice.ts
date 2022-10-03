@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../types";
+import { Product } from "../types";
 
 interface ProductDetails {
   selectedProduct: Product;
@@ -31,12 +31,7 @@ const token =
 export const fetchProductDetails = createAsyncThunk(
   "productDetails/fetch",
   async (_id: Product["_id"] | undefined) => {
-    const response = await axios.get<{ product: Product }>(
-      `https://upayments-studycase-api.herokuapp.com/api/products/${_id}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const response = await axios.get<{ product: Product }>(`/products/${_id}`);
     return response.data.product;
   }
 );

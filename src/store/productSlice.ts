@@ -1,7 +1,7 @@
-import { createProductRequest } from "./../../types/index";
+import { CreateProductRequest, ProductCategory } from "../types/index";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../../types";
-import { Axios } from "../../services/product";
+import { Product } from "../types";
+import { axios } from "../lib/axios";
 
 interface Products {
   data: Product[];
@@ -17,23 +17,35 @@ const initialState: Products = {
   error: "",
 };
 
-export const fetchProducts = createAsyncThunk("products/fetch", async () => {
-  const response = await Axios.get<{ products: Product[] }>("/products");
-  return response.data.products;
-});
+export const fetchProducts = createAsyncThunk(
+  "products/fetch",
+  async (id?: ProductCategory["_id"]) => {
+    let response;
+    if (!id) {
+      response = await axios.get<{ products: Product[] }>("/products");
+    } else {
+      response = await axios.get<{ products: Product[] }>(`/products/${id}`);
+    }
+
+    return response.data.products;
+  }
+);
 
 export const fetchProductDetails = createAsyncThunk(
   "productDetails/fetch",
   async (_id: Product["_id"]) => {
-    const response = await Axios.get<{ product: Product }>(`/products/${_id}`);
+    const response = await axios.get<{ product: Product }>(`/products/${_id}`);
     return response.data.product;
   }
 );
 
-export const createProducts = createAsyncThunk(
+export const createProduct = createAsyncThunk(
   "product/create",
-  async (data) => {
-    const response = await Axios.post<createProductRequest>("/products", data);
+  async (data: CreateProductRequest) => {
+    const response = await axios.post<CreateProductRequest, { data: Product }>(
+      "/products",
+      data
+    );
     return response.data;
   }
 );
@@ -61,7 +73,6 @@ export const productSlice = createSlice({
     });
   },
 });
-
 
 export const createProductSlice = createSlice({
   name: "createProduct",

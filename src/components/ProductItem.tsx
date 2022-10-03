@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ArrowRight, Star } from "react-feather";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   deleteFavoriteProduct,
+  favoritedProductSlice,
   setFavoritedProduct,
-} from "../features/products/favoriteProductSlice";
-import { fetchProductDetails } from "../features/products/productSlice";
+} from "../store/favoriteProductSlice";
+import { fetchProductDetails } from "../store/productSlice";
 /* import { fetchProductDetails } from "../features/products/productDetailsSlice"; */
 import { Product } from "../types";
 import { truncate } from "../utils/truncate";
@@ -16,28 +17,27 @@ type ProductItemProps = {
 };
 
 export const ProductItem = ({ item }: ProductItemProps) => {
+  const isFavorite = useAppSelector((state) => state.favoritedProduct[item._id]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [favorited, setFavorited] = useState(false);
+  console.log({isFavorite})
 
   return (
     <div className="rounded-lg p-4 cursor-pointer bg-blue-200 mb-20 flex flex-col justify-between h-[500px]">
       <p>
-        {!favorited ? (
+        {!isFavorite ? (
           <Star
             color="white"
             onClick={() => {
               dispatch(setFavoritedProduct(item));
-              setFavorited(!favorited);
             }}
           />
         ) : (
           <Star
             onClick={() => {
               dispatch(deleteFavoriteProduct(item));
-              setFavorited(!favorited);
             }}
-            color={favorited ? "blue" : "white"}
+            color={isFavorite ? "blue" : "white"}
           />
         )}
       </p>

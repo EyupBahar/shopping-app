@@ -1,6 +1,6 @@
 import { Star } from "react-feather";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { deleteFavoriteProduct } from "../features/products/favoriteProductSlice";
+import { deleteFavoriteProduct } from "../store/favoriteProductSlice";
 import { truncate } from "../utils/truncate";
 
 export const FavoriteProducts = () => {

@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { createProductRequest } from "../types";
+import { CreateProductRequest } from "../types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { productService } from "../services/product";
+import { useAppDispatch } from "../app/hooks";
+import { createProduct } from "../store/productSlice";
 
 export const CreateProduct = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     resetField,
     handleSubmit,
     formState: { errors },
-  } = useForm<createProductRequest>();
-  const onSubmit: SubmitHandler<createProductRequest> = async (data) => {
-    await productService.createNewProduct(data)
-  }
-  
+  } = useForm<CreateProductRequest>();
+  const onSubmit: SubmitHandler<CreateProductRequest> = async (data) => {
+    await dispatch(createProduct(data));
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <form onSubmit={handleSubmit(onSubmit)}>

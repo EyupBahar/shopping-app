@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { Product } from "../../types";
+import { RootState } from "../app/store";
+import { Product } from "../types";
 
 export type FavoritedProduct = Product;
 

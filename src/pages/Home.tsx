@@ -1,27 +1,43 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { fetchProducts } from "../features/products/productSlice";
+import { fetchProducts } from "../store/productSlice";
 import { ProductItem } from "../components/ProductItem";
-import { fetchCategories } from "../features/products/productCategorySlice";
+import { fetchCategories } from "../store/productCategorySlice";
 import { CategorySelector } from "../components/CategorySelector";
+import { ProductCategory } from "../types";
 
 export const Home = () => {
   const productList = useAppSelector((state) => state.product.data);
   const dispatch = useAppDispatch();
-  const [filteredProduct, setFilteredProduct] = useState<any>([]);
+  const [filteredProductList, setFilteredProductList] = useState(productList);
+  const [filterString, setFilterString] = useState("");
+  const [selectedCategoryName, setSelectedCategoryName] = useState("");
 
-  const filteredProductList = productList.filter(({ name }) =>
-    name.includes(filteredProduct)
-  );
+  useEffect(() => {
+    filterProductList();
+  }, [filterString, selectedCategoryName, productList]);
 
-  const handleOnChange = (event: any) => {
-    setFilteredProduct(event.target.value);
+  const filterProductList = () => {
+    setFilteredProductList(
+      productList.filter(
+        ({ name, category }) =>
+          name.toLowerCase().includes(filterString.toLowerCase()) &&
+          category.includes(selectedCategoryName)
+      )
+    );
   };
 
+  const handleOnChange = (event: any) => {
+    setFilterString(event.target.value);
+  };
+
+  const handleCategoryChange = (name: ProductCategory["name"]) => {
+    setSelectedCategoryName(name);
+  };
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
-    // ? dispatch(fetchCategory()); KATEGORİYİ SEÇTİRİP ID sini yollanmalı //
   }, [dispatch]);
 
   return (
@@ -34,7 +50,7 @@ export const Home = () => {
           placeholder="Search Product"
         />
         <div className="w-full md:w-[250px] mt-4 md:mt-0">
-          <CategorySelector />
+          <CategorySelector onChange={handleCategoryChange} />
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-[2rem] md:px-[4rem] pt-[80px]">
