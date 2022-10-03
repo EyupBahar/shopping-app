@@ -18,9 +18,9 @@ export const CategorySelector = () => {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-lg px-2 w-[250px]">
+    <div className="border-2 border-gray-300 rounded-lg px-2 md:w-[250px]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="">
+        <div className="w-full">
           <select className="w-full py-2 !outline-none">
             <option value="All">Categories</option>
             {category?.categories?.map((item) => (

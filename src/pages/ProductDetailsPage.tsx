@@ -3,18 +3,15 @@ import { useEffect } from "react";
 import { useAppSelector } from "../app/hooks";
 
 export const ProductDetailsPage = () => {
-  
   const selectedProduct = useAppSelector(
     (state) => state.productDetails.selectedProduct
   );
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="w-[50%] flex flex-col md:flex-row items-center justify-around mx-auto bg-slate-200 p-4 rounded-md">
-        <div>
+      <div className="w-full p-4 mx-[2rem] md:px-0 md:w-[50%] flex flex-col md:flex-row items-center justify-around md:mx-auto bg-slate-200 rounded-md">
+        <div className=" flex justify-center">
           <img
             src={selectedProduct.avatar}
             alt="avatar"

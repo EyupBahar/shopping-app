@@ -19,7 +19,7 @@ export const ProductItem = ({ item }: ProductItemProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [favorited, setFavorited] = useState(false);
-
+  
   return (
     <div className="rounded-lg p-4 cursor-pointer bg-blue-100 mb-20 flex flex-col justify-between h-[500px]">
       <p>
